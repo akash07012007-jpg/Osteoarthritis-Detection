@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@100..900&family=Work+Sans:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #f1fcf5;
+    color: #141e1a;
+    overscroll-behavior-y: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+}
+
+@layer components {
+  /* Material Symbols icon utility */
+  .material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Primary action button */
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-container text-on-primary font-bold min-h-[48px] rounded-xl flex items-center justify-center gap-2 shadow-md active:scale-[0.99] transition-all px-4 w-full;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.01em;
+    font-family: 'Atkinson Hyperlegible Next', sans-serif;
+  }
+
+  /* Secondary urgent button */
+  .btn-urgent {
+    @apply bg-secondary hover:opacity-90 text-on-secondary font-bold min-h-[48px] rounded-xl flex items-center justify-center gap-2 shadow-md active:scale-[0.99] transition-all px-4 w-full;
+    font-size: 16px;
+    line-height: 22px;
+    font-family: 'Atkinson Hyperlegible Next', sans-serif;
+  }
+
+  /* Tertiary/outline button */
+  .btn-outline {
+    @apply border border-outline-variant bg-transparent text-on-surface hover:bg-surface-container font-semibold min-h-[48px] rounded-xl flex items-center justify-center gap-2 active:scale-[0.99] transition-all px-4 w-full;
+    font-size: 14px;
+    line-height: 18px;
+    font-family: 'Atkinson Hyperlegible Next', sans-serif;
+  }
+
+  /* Card tier 1 */
+  .card-1 {
+    @apply bg-surface-container-high rounded-xl p-4 shadow-card-1;
+  }
+
+  /* Card tier 2 */
+  .card-2 {
+    @apply bg-surface-container-lowest rounded-xl p-4 shadow-card-2;
+  }
+
+  /* Input field */
+  .input-field {
+    @apply bg-surface-container-low rounded-xl px-3.5 py-3 focus-within:bg-surface-container-highest transition-colors text-on-surface;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: 'Atkinson Hyperlegible Next', sans-serif;
+  }
+
+  /* Badge low risk */
+  .badge-low {
+    @apply px-2.5 py-1 rounded-lg bg-primary-fixed text-on-primary-fixed flex items-center gap-1;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'Atkinson Hyperlegible Next', sans-serif;
+  }
+
+  /* Badge moderate risk */
+  .badge-moderate {
+    @apply px-2.5 py-1 rounded-lg bg-tertiary-fixed text-on-tertiary-fixed flex items-center gap-1;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'Atkinson Hyperlegible Next', sans-serif;
+  }
+
+  /* Badge high risk */
+  .badge-high {
+    @apply px-2.5 py-1 rounded-lg bg-secondary-container text-on-secondary-container flex items-center gap-1;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'Atkinson Hyperlegible Next', sans-serif;
+  }
+
+  /* Selection tile (questionnaire) */
+  .tile-inactive {
+    @apply border-2 border-outline-variant bg-surface-container rounded-xl p-3 min-h-[60px] flex items-center gap-3 cursor-pointer transition-all active:scale-[0.99];
+  }
+
+  .tile-active {
+    @apply border-2 border-primary bg-primary/5 rounded-xl p-3 min-h-[60px] flex items-center gap-3 cursor-pointer transition-all;
+  }
+}

@@ -1,0 +1,13 @@
+services:
+  sakhi-app:
+    build: .
+    container_name: sakhi-oa-screening
+    ports:
+      - "3001:3001"
+      - "5173:5173"
+    volumes:
+      - sakhi-data:/app/data
+    restart: always
+
+volumes:
+  sakhi-data:
