@@ -2,10 +2,6 @@
 
 > A zero-extra-hardware, offline-first screening tool that lets an ASHA/ANM worker triage knee osteoarthritis (OA) in under 10 minutes, with an explainable risk tier, a referral report, and a government dashboard showing where specialists are needed.
 
-![SIH](https://img.shields.io/badge/Smart%20India%20Hackathon-SIH-orange)
-![Status](https://img.shields.io/badge/status-MVP%20built-green)
-![Offline First](https://img.shields.io/badge/offline--first-yes-blue)
-
 ---
 
 ## 📖 Overview
