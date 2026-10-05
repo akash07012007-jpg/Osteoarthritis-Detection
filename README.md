@@ -22,7 +22,7 @@
 ## ✨ Key Features
 
 **Software Stack**
-- 🐍⚛️ **React + Firebase Firestore:** offline persistence and automatic sync, with no custom sync queue
+- - 🐍⚛️ **React + Better-SQLite3:** local database storage with LocalStorage/IndexedDB for offline support
 - 🎥 **MediaPipe Pose Landmarker:** browser-based, on-device sit-to-stand motion assessment
 - 📋 **KOOS (42 items, 5 subscales):** clinical questionnaire; the full instrument is used as the sole instrument since its Daily Living subscale already covers WOMAC Function
 - 🧮 **Fusion Engine (`fusion-engine.js`):** weighted, auto-renormalizing risk scoring with a plain-language explanation
@@ -60,8 +60,7 @@ Sakhi needs **no additional hardware**. That is a deliberate choice for low-reso
 | 🔊 Phone speaker / headphones | Plays per-question audio clips in the local language |
 | 🖥️ Backend server *(optional)* | Hosts the FastAPI X-ray model endpoint (`POST /predict-xray`) |
 | 🩻 X-ray image *(optional)* | Adds imaging evidence to the fusion score when available |
-| ☁️ Firebase Firestore | Offline-persistent storage that syncs when connectivity returns |
-
+| 💾 Better-SQLite3 + LocalStorage/IndexedDB | Local storage and offline data persistence |
 ---
 
 ## 🏗️ System Architecture
@@ -74,7 +73,7 @@ Sakhi needs **no additional hardware**. That is a deliberate choice for low-reso
                                                 ├─► FUSION ENGINE ─► Risk Tier + Explanation ─► Referral Report
  Camera Sit-to-Stand ─► Motion + Symmetry ──────┤   (confidence-       │
  (MediaPipe, on-device)   (confidence score)    │    weighted)         ▼
-                                                │              Firestore (offline sync)
+                                                │              Better-SQLite3 + LocalStorage/IndexedDB
  X-ray (optional) ─► EfficientNet-B0 + Grad-CAM ┘                      │
                                                                        ▼
                                                            Government Dashboard
@@ -112,11 +111,12 @@ Without imaging, the clinical and motion scores are weighted roughly 50/50. With
 ## 🚀 Getting Started
 
 ```bash
-git clone https://github.com/[TODO-username]/[TODO-repo].git
-cd [TODO-repo]
+git clone https://github.com/akash07012007-jpg/Sakhi.git
+cd Sakhi
 
 # Frontend
-cd app && npm install
+cd app
+npm install
 npm run dev
 
 # X-ray API (optional)
@@ -125,7 +125,7 @@ pip install -r requirements.txt
 uvicorn main:app --reload      # exposes POST /predict-xray
 ```
 
-**Prerequisites:** Node.js `[TODO version]`, Python 3.9+, a Firebase project with Firestore offline persistence enabled `[TODO: add env/config instructions]`.
+Prerequisites: Node.js 18+, Python 3.9+
 
 ---
 
@@ -138,7 +138,7 @@ uvicorn main:app --reload      # exposes POST /predict-xray
 | 3. MVP Lock | 3 core features: questionnaire, camera test, fusion engine | ✅ |
 | 4. Core Builds | Sit-to-stand test, KOOS form, fusion engine | ✅ |
 | 5. X-ray Module | Trained EfficientNet-B0 with FastAPI endpoint and Grad-CAM | ✅ |
-| 6. Government Dashboard & Data | Firestore, hotspots, specialist allocation, referral directory | ✅ |
+| 6. Government Dashboard & Data | Local database, hotspots, specialist allocation, referral directory | ✅ |
 | 7. App Design & Build | Master design spec, Stitch → React implementation, audio component | 🔄 ~60% built, corrections pass in progress |
 | 8. Localization | Assamese audio done; Khasi and Bengali content pending | 🔄 |
 | 9. Pitch Deck | Problem, Solution and Uniqueness slides done; Core Features and Architecture slides pending | 🔄 |
@@ -193,4 +193,4 @@ Sakhi is a **screening and triage aid, not a diagnostic device**. It supports re
 | `[TODO]` | `[TODO]` | `[TODO]` |
 
 ## 🙏 Acknowledgements
-MediaPipe, KOOS and WOMAC instruments, NICE OA guidelines, DeepKnee/Tiulpin et al. (methodology reference), Firebase, Google Stitch.
+MediaPipe, KOOS and WOMAC instruments, NICE OA guidelines, DeepKnee/Tiulpin et al. (methodology reference), Google Stitch.
